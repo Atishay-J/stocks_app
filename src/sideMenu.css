@@ -1,0 +1,46 @@
+#sideMenuCont {
+  border-radius: 10px;
+  background: #fafafa;
+  box-shadow: -5px -5px 10px #e6e4e4, 5px 5px 10px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  /* border: 1px solid green; */
+}
+#sideMenuBtnsCont {
+  /* border: 1px solid red; */
+  width: 95%;
+  /* height: 6rem; */
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#sideBtnCont {
+  width: 12rem;
+  height: auto;
+  margin: 0.3rem;
+  padding: 0;
+  /* border: 1px solid yellow; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #e1e1e1, #ffffff);
+  box-shadow: 5px -5px 10px #e4e3e3, -5px 5px 10px #ffffff;
+}
+.sideBtnImg {
+  width: 1.3rem;
+  margin-top: 0.8rem;
+}
+
+.sideBtnName {
+  margin-top: 0.8rem;
+  font-size: 0.6rem;
+}

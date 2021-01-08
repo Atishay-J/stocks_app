@@ -1,0 +1,33 @@
+#nav_cont {
+  height: 1rem;
+  /* background: rgb(255, 255, 255); */
+
+  border-radius: 9px;
+  /* background: #f2f2f2; */
+  background: #fafafa;
+  box-shadow: -5px 5px 10px #cdcdcd, 5px -5px 10px #ffffff;
+  padding: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#menuIconsRightCont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  width: 34%;
+}
+#loggedIn_cont {
+  /* border: 1px solid rebeccapurple; */
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+.navIcons {
+  color: var(--IconColor1);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
