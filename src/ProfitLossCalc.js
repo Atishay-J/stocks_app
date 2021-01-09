@@ -2,6 +2,7 @@
 
 // ** Init API **
 import React, { useState } from "react";
+import StockCard from "./StockCard";
 
 let apiUrl = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&";
 const ApiKey = process.env.REACT_APP_API_KEY;
@@ -49,9 +50,8 @@ function getValues() {
 //                        REACT FUNCTION
 // ==============================================================================
 function ProfitLossCalc() {
-  // const [stockData, setStocksData] = useState([{ symbol: "", name: "" }]);
-  // const [isLoading, setIsLoading] = useState(true);
   const [stockList, setStockList] = useState([]);
+  const [selectedStock, setSelectedStock] = useState("select");
 
   function findStock() {
     getValues();
@@ -70,10 +70,16 @@ function ProfitLossCalc() {
         setStockList(arr);
       });
   }
-
+  function selectStock(e) {
+    // console.log(e);
+    let curStock = e.target.nextElementSibling.innerHTML;
+    console.log(curStock);
+    setSelectedStock(curStock);
+  }
   return (
     <div id="mainCalcCont">
       <h4 className="calcHeading">Calculate Profit / Loss</h4>
+      <h3>{selectedStock}</h3>
       <div className="inputCont">
         <input
           className="inputField"
@@ -104,9 +110,11 @@ function ProfitLossCalc() {
       {stockList && (
         <div>
           {stockList.map((item) => (
-            <p>
-              {item.name} , {item.symbol}
-            </p>
+            <StockCard
+              onClick={selectStock}
+              title={item.name}
+              symbol={item.symbol}
+            />
           ))}
         </div>
       )}
