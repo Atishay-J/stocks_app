@@ -35,8 +35,7 @@ let stockName;
 let numOfStocks;
 let buyingPrice;
 var stocksWithSimilarName = [];
-let similarNameStockList;
-let list;
+let lengthOfStocks;
 
 function getValues() {
   stockName = document.getElementById("stockNameInput").value;
@@ -46,13 +45,15 @@ function getValues() {
   console.log(stockName, "\n", numOfStocks, "\n", buyingPrice);
 }
 
-let arr = Object.entries(stocksWithSimilarName);
 //===============================================================================
+//                        REACT FUNCTION
+// ==============================================================================
 function ProfitLossCalc() {
-  const [similarNamesList, setSimilarNamesList] = useState([]);
+  // const [stockData, setStocksData] = useState([{ symbol: "", name: "" }]);
+  // const [isLoading, setIsLoading] = useState(true);
+  const [stockList, setStockList] = useState([]);
 
   function findStock() {
-    setSimilarNamesList([]);
     getValues();
     let query = `${apiUrl}keywords=${stockName}&apikey=${ApiKey}`;
     console.log(query);
@@ -63,36 +64,10 @@ function ProfitLossCalc() {
       .then((response) => response.json())
       .then((data) => {
         stocksWithSimilarName = data.bestMatches;
-
-        // console.log("data is ", data);
-        // console.log("stock with simi ", stocksWithSimilarName[0]);
-        // console.log("type of ", typeof stocksWithSimilarName);
-        // console.log(Object.keys(stocksWithSimilarName[0])[0]);
-        // console.log(Object.entries(stocksWithSimilarName[0])[0][1]);
-        // console.log(similarNameStockList);
-        // setSimilarNamesList(similarNameStockList);
-        // setSimilarNamesList(similarNameStockList[i][1]["1. symbol"]);
-
-        // console.log(Object.entries(stocksWithSimilarName)[0][1]["1. symbol"]);
-
-        similarNameStockList = Object.entries(stocksWithSimilarName);
-
-        for (let i = 0; i < similarNameStockList.length; i++) {
-          // console.log("here is list");
-          // console.log(similarNameStockList[i][1]);
-          list = Object.entries(stocksWithSimilarName)[i][1][
-            ("1. symbol", "2. name")
-          ];
-
-          // setSimilarNamesList.push(similarNameStockList[i][1]["1. symbol"]);
-          setSimilarNamesList((oldList) => [
-            ...oldList,
-            similarNameStockList[i][1]["1. symbol"],
-          ]);
-
-          // console.log(similarNamesList[i][1]["1. symbol"]);
-          console.log(list);
-        }
+        let arr = stocksWithSimilarName.map((item, index) => {
+          return { name: item["2. name"], symbol: item["1. symbol"] };
+        });
+        setStockList(arr);
       });
   }
 
@@ -124,13 +99,17 @@ function ProfitLossCalc() {
           Search
         </button>
       </div>
-      <div>
-        <ul id="list">
-          {similarNamesList.map((item, index) => {
-            return <li>{item}</li>;
-          })}
-        </ul>
-      </div>
+
+      {/*   **LIST OUPUT**   */}
+      {stockList && (
+        <div>
+          {stockList.map((item) => (
+            <p>
+              {item.name} , {item.symbol}
+            </p>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
