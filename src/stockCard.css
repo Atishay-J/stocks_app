@@ -1,0 +1,19 @@
+.stockCardCont {
+  font-family: var(--fontText);
+  background: rgb(206, 206, 206);
+}
+.stockCardInfoCont {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stockCardTitle {
+  cursor: pointer;
+}
+.stockCardSymbol {
+  font-size: 0.8rem;
+}
+.stockCardRegion {
+  font-size: 0.7rem;
+}

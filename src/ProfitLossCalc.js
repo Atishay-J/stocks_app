@@ -36,7 +36,6 @@ let stockName;
 let numOfStocks;
 let buyingPrice;
 var stocksWithSimilarName = [];
-let lengthOfStocks;
 
 function getValues() {
   stockName = document.getElementById("stockNameInput").value;
@@ -52,7 +51,7 @@ function getValues() {
 function ProfitLossCalc() {
   const [stockList, setStockList] = useState([]);
   const [selectedStock, setSelectedStock] = useState("select");
-
+  const [showResult, setShowResult] = useState(false);
   function findStock() {
     getValues();
     let query = `${apiUrl}keywords=${stockName}&apikey=${ApiKey}`;
@@ -65,17 +64,30 @@ function ProfitLossCalc() {
       .then((data) => {
         stocksWithSimilarName = data.bestMatches;
         let arr = stocksWithSimilarName.map((item, index) => {
-          return { name: item["2. name"], symbol: item["1. symbol"] };
+          return {
+            name: item["2. name"],
+            symbol: item["1. symbol"],
+            region: item["4. region"],
+          };
         });
         setStockList(arr);
       });
   }
   function selectStock(e) {
     // console.log(e);
-    let curStock = e.target.nextElementSibling.innerHTML;
+    let curStock = e.target.nextSibling.firstChild.innerHTML;
     console.log(curStock);
     setSelectedStock(curStock);
   }
+let output;
+  if(!showResult){
+    output = 
+  }
+
+
+
+
+
   return (
     <div id="mainCalcCont">
       <h4 className="calcHeading">Calculate Profit / Loss</h4>
@@ -114,6 +126,7 @@ function ProfitLossCalc() {
               onClick={selectStock}
               title={item.name}
               symbol={item.symbol}
+              region={item.region}
             />
           ))}
         </div>

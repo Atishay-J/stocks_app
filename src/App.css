@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;700&family=Rubik:wght@300;400;500;600;700&display=swap");
+
 :root {
   --IconColor1: #1d1719;
+  --fontText: "Fira Sans", sans-serif;
+  --fontHead: "Rubik", sans-serif;
 }
 
 /* @media screen and (min-width: 640px) {
