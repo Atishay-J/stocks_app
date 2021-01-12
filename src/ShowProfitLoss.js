@@ -1,7 +1,9 @@
 import React from "react";
 
 function ShowProfitLoss(props) {
-  // console.log(props.stockData.open);
+  // console.log("OPENINIG PRICE IS ", props.stockData[open]);
+  console.log("CUREEEENTTT STOCK ", props.curStock);
+  console.log("From P/L cur data is ", props.stockData.open);
   let numOfStocks = props.stocksNum;
   let stockPrice = props.stocksPrice;
 

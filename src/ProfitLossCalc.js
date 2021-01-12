@@ -37,6 +37,7 @@ let stockName;
 let numOfStocks;
 let buyingPrice;
 let curStock;
+let curData = "";
 var stocksWithSimilarName = [];
 let loader = true;
 
@@ -57,7 +58,13 @@ function ProfitLossCalc() {
   const [stockList, setStockList] = useState([]);
   const [selectedStock, setSelectedStock] = useState();
   const [showResult, setShowResult] = useState(false);
-  const [selectedStockData, setSelectedStockData] = useState();
+  const [selectedStockData, setSelectedStockData] = useState({
+    open: "",
+    close: "",
+    volume: "",
+    high: "",
+    low: "",
+  });
   const [showLoader, setShowLoader] = useState();
 
   //=============================================================
@@ -133,6 +140,30 @@ function ProfitLossCalc() {
 
     fetchSelectedStockData(curStock).then((result) => {
       console.log("WE GOT THE FETCH RESULT ", result);
+
+      let arr = "";
+
+      for (let k in result["Time Series (Daily)"]) {
+        arr = result["Time Series (Daily)"][k];
+        console.log("THE ARR GOT THE DATA", arr);
+        break;
+      }
+      curData = {
+        open: arr["1. open"],
+        high: arr["2. high"],
+        low: arr["3. low"],
+        close: arr["4. close"],
+        volume: arr["5. volume"],
+      };
+      // setSelectedStockData({
+      //   open: curData.opens,
+      //   high: arr["2. high"],
+      //   low: arr["3. low"],
+      //   close: arr["4. close"],
+      //   volume: arr["5. volume"],
+      // });
+      console.log("THE CUR DATA IS ", curData);
+      // console.log("THe sleected stock data is ==", selectedStockData);
       setShowResult(true);
       // setShowLoader(false);
       // loader = false;
@@ -145,9 +176,7 @@ function ProfitLossCalc() {
   //            GET DATA OF SELECTED STOCK (ASYNC FETCH 2)
   //==============================================================
 
-  let curData = "";
   let curStockKey = selectedStock;
-  let arr = "";
 
   async function fetchSelectedStockData(value) {
     setShowLoader(true);
@@ -229,7 +258,8 @@ function ProfitLossCalc() {
       ? (output = (
           <ShowProfitLoss
             curstock={selectedStock}
-            stockData={selectedStockData}
+            // stockData={selectedStockData}
+            stockData={curData}
             stocksNum={numOfStocks}
             stocksPrice={buyingPrice}
           />
