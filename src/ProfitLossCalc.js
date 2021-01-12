@@ -89,7 +89,7 @@ function ProfitLossCalc() {
   //                ON SUBMIT/CLICK FUNCTION
   //==============================================================
 
-  function findStock() {
+  function findStock(form) {
     // getValues();
     // let query = `${apiUrl}keywords=${stockName}&apikey=${ApiKey}`;
     // console.log(query);
@@ -109,6 +109,7 @@ function ProfitLossCalc() {
     //     loader = false;
     //   });
     // setShowResult(false);
+    form.preventDefault();
     getSimilarStocks().then((result) => {
       setShowLoader(true);
       console.log("FIRST ASYNC FETCH RESULT IS (CALLING) ", result);
@@ -284,29 +285,40 @@ function ProfitLossCalc() {
       <h4 className="calcHeading">Calculate Profit / Loss</h4>
 
       <div className="inputCont">
-        <input
-          className="inputField"
-          id="stockNameInput"
-          type="text"
-          placeholder="Enter Stock Name"
-          // onChange={autocomplete}
-        />
-
-        <input
-          className="inputField"
-          id="buyingPriceInput"
-          type="number"
-          placeholder="Buying Price"
-        />
-        <input
-          className="inputField"
-          id="numberOfStocksInput"
-          type="number"
-          placeholder="Number of stocks"
-        />
-        <button className="submitBtn" onClick={findStock}>
-          Search
-        </button>
+        <form onSubmit={findStock}>
+          <input
+            required
+            className="inputField"
+            id="stockNameInput"
+            type="text"
+            placeholder="Enter Stock Name"
+            // onChange={autocomplete}
+          />
+          <input
+            required
+            className="inputField"
+            id="buyingPriceInput"
+            type="number"
+            placeholder="Buying Price"
+            min="1"
+          />
+          <input
+            required
+            className="inputField"
+            id="numberOfStocksInput"
+            type="number"
+            placeholder="Number of stocks"
+            min="1"
+          />
+          <input
+            type="submit"
+            className="submitBtn"
+            // onClick={findStock}
+            value="Search"
+          />
+          {/* Search */}
+          {/* </button> */}
+        </form>
       </div>
 
       {/*   **LIST OUPUT**   */}

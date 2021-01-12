@@ -6,8 +6,14 @@ function ShowProfitLoss(props) {
   console.log("From P/L cur data is ", props.stockData.open);
   let numOfStocks = props.stocksNum;
   let stockPrice = props.stocksPrice;
+  let answer;
+  let calculate = (props.stockData.close - stockPrice).toFixed(4);
+  if (calculate > 0) {
+    answer = "Yayy, You made profit";
+  } else {
+    answer = "sorry for your loss";
+  }
 
-  // let calculate = props.stockData.close - stockPrice;
   // console.log(
   //   "From show p/l --- closing price is  ",
   //   props.stockData.arr["4. close"]
@@ -18,7 +24,8 @@ function ShowProfitLoss(props) {
   return (
     <div className="showProfitLossCont">
       <h2>this is for showwww </h2>
-      <h3></h3>
+      <h3>{answer}</h3>
+      <h4>The total amount you made is {calculate * numOfStocks}</h4>
     </div>
   );
 }
