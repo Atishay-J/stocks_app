@@ -1,8 +1,9 @@
+import Skeleton from "react-loading-skeleton";
 import "./stockCard.css";
 function StockCard(props) {
   return (
     <div className="stockCardCont">
-      <h2 className="stockCardTitle" onClick={props.onClick}>
+      <h2 className="stockCardTitle" onClick={props.click}>
         {props.title}
       </h2>
       <div className="stockCardInfoCont">
