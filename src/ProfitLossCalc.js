@@ -90,25 +90,6 @@ function ProfitLossCalc() {
   //==============================================================
 
   function findStock(form) {
-    // getValues();
-    // let query = `${apiUrl}keywords=${stockName}&apikey=${ApiKey}`;
-    // console.log(query);
-    //=================== FETCHING DATA =======================
-    // fetch(query)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     stocksWithSimilarName = data.bestMatches;
-    //     let arr = stocksWithSimilarName.map((item, index) => {
-    //       return {
-    //         name: item["2. name"],
-    //         symbol: item["1. symbol"],
-    //         region: item["4. region"],
-    //       };
-    //     });
-    //     setStockList(arr);
-    //     loader = false;
-    //   });
-    // setShowResult(false);
     form.preventDefault();
     getSimilarStocks().then((result) => {
       setShowLoader(true);
@@ -156,18 +137,10 @@ function ProfitLossCalc() {
         close: arr["4. close"],
         volume: arr["5. volume"],
       };
-      // setSelectedStockData({
-      //   open: curData.opens,
-      //   high: arr["2. high"],
-      //   low: arr["3. low"],
-      //   close: arr["4. close"],
-      //   volume: arr["5. volume"],
-      // });
+
       console.log("THE CUR DATA IS ", curData);
-      // console.log("THe sleected stock data is ==", selectedStockData);
+
       setShowResult(true);
-      // setShowLoader(false);
-      // loader = false;
 
       setShowLoader(false);
     });
@@ -195,62 +168,12 @@ function ProfitLossCalc() {
     return data;
   }
 
-  //   await fetch(stockDataURL)
-  //     .then(async (response) => response.json())
-  //     .then(async (data) => {
-  //       console.log("Fetching started....");
-  //       console.log("THE DATA THAT FETCH GOT ", data);
-  //       for (let k in data["Time Series (Daily)"]) {
-  //         arr = data["Time Series (Daily)"][k];
-  //         console.log("THE ARR GOT THE DATA", arr);
-  //         break;
-  //       }
-  //       // curData = {
-  //       //   open: arr["1. open"],
-  //       //   high: arr["2. high"],
-  //       //   low: arr["3. low"],
-  //       //   close: arr["4. close"],
-  //       //   volume: arr["5. volume"],
-  //       // };
-  //       setSelectedStockData(arr);
-  //     });
-  //   console.log("THE CUR DATA IS ", curData);
-  //   // stockDataURL = "";
-  // }
-
   //================================================================================
   //                              SHOW OUTPUT
   //===============================================================================
 
   let output;
-  // let rugby = <Skeleton height={100} />;
 
-  // if (showResult) {
-  //   output = (
-  //     <ShowProfitLoss
-  //       curstock={selectedStock}
-  //       stockData={selectedStockData}
-  //       stocksNum={numOfStocks}
-  //       stocksPrice={buyingPrice}
-  //     />
-  //   );
-  // } else {
-  //   output = stockList && (
-  //     <div>
-  //       {stockList.map((item, index) => (
-  //         <StockCard
-  //           key={index}
-  //           click={selectStock}
-  //           title={item.name}
-  //           symbol={item.symbol}
-  //           region={item.region}
-  //         />
-  //       ))}
-  //     </div>
-  //   );
-  // }
-
-  console.log("VALUE OF SHOW LOADER IS ", showLoader);
   if (showLoader) {
     output = <Skeleton />;
   } else {
@@ -259,7 +182,6 @@ function ProfitLossCalc() {
       ? (output = (
           <ShowProfitLoss
             curstock={selectedStock}
-            // stockData={selectedStockData}
             stockData={curData}
             stocksNum={numOfStocks}
             stocksPrice={buyingPrice}
@@ -292,7 +214,6 @@ function ProfitLossCalc() {
             id="stockNameInput"
             type="text"
             placeholder="Enter Stock Name"
-            // onChange={autocomplete}
           />
           <input
             required
@@ -310,14 +231,7 @@ function ProfitLossCalc() {
             placeholder="Number of stocks"
             min="1"
           />
-          <input
-            type="submit"
-            className="submitBtn"
-            // onClick={findStock}
-            value="Search"
-          />
-          {/* Search */}
-          {/* </button> */}
+          <input type="submit" className="submitBtn" value="Search" />
         </form>
       </div>
 
