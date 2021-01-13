@@ -8,7 +8,14 @@
 .mainContainer {
   background: rgb(211, 152, 152);
 }
-
+a {
+  color: red;
+  text-decoration: none;
+}
+.navActiveClass {
+  color: rgb(90, 201, 90);
+  text-decoration: none;
+}
 /* @media screen and (min-width: 640px) {
   .App {
     background: red;
