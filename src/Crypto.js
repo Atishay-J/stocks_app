@@ -4,7 +4,7 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
 function Crypto() {
-  const [onSelect, setOnSelect] = useState();
+  const [curCurrency, setCurCurrency] = useState("INR");
   const [gotError, setGotError] = useState(false);
   let ApiKey = process.env.REACT_APP_API_KEY;
   let ApiUrl =
@@ -12,7 +12,6 @@ function Crypto() {
 
   //=================================================================
   let curCrypto;
-  let curCurrency;
   // let gotError = false;
   let output;
   let query;
@@ -30,8 +29,6 @@ function Crypto() {
     { name: "Litecoin", symbol: "LTC" },
     { name: "Bitcoin Cash", symbol: "BCH" },
   ];
-
-  curCurrency = options[0].value;
 
   const defaultOption = options[0];
 
@@ -64,16 +61,15 @@ function Crypto() {
         }
       });
     });
-  }, []);
+  }, [curCurrency]);
 
   //=============================================================================
   //                             CHANGING CURRENCY
   //=============================================================================
   function changeCurrency(e) {
-    curCurrency = e.value;
+    setCurCurrency(e.value);
     console.log(curCurrency);
   }
-
   //==========================================================================
   //                        OUTPUT
   //=========================================================================
