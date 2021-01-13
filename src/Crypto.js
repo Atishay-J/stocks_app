@@ -11,8 +11,7 @@ function Crypto() {
     "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=";
 
   //=================================================================
-  let curCrypto;
-  // let gotError = false;
+
   let output;
   let query;
 
@@ -40,11 +39,11 @@ function Crypto() {
     async function doFetch() {
       let response = await fetch(query);
       let data = await response.json();
-      // .then(data => {console.log(data)})
       console.log("INSIDE AYSNC FETCH");
-      // console.log(data);
+
       return data;
     }
+
     cryptoCurrency.forEach((e) => {
       console.log("loggggg");
       console.log(e.symbol);
