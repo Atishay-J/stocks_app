@@ -1,0 +1,13 @@
+.dataCardCont {
+  background: rgb(214, 214, 214);
+  display: flex;
+}
+.dataCardImage {
+  border: 1px solid green;
+}
+.dataCardInfoCont {
+  display: flex;
+}
+.dataCardInfo {
+  margin-left: 3rem;
+}
