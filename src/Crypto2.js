@@ -95,6 +95,7 @@ function Crypto2() {
   return (
     <div>
       <Dropdown
+        className="dropdown"
         options={options}
         onChange={changeCurrency}
         value={curCurrency}
