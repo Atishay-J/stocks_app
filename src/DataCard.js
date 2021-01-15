@@ -2,17 +2,18 @@ import React from "react";
 import "./DataCard.css";
 function DataCard(props) {
   return (
-    <div className="dataCardCont">
-      <div className="dataCardImage">
-        <h4>Here is image</h4>
+    <div className="cryptoMainCont">
+      <div className="cryptoImgCont">
+        <img className="cryptoImg" alt="Crpyto Image" src={props.image} />
       </div>
-      <div className="dataCardDataCont">
-        <h3 className="dataCardTitle">{props.title}</h3>
-        <div className="dataCardInfoCont">
-          <h4 className="dataCardInfo">{props.currCode}</h4>
-          <h4 className="dataCardInfo">{props.outputCurr}</h4>
-          <h4 className="dataCardInfo">{props.exchangeRate}</h4>
-          {/* <h4 className="dataCardInfo">Info 3</h4> */}
+      <div className="cryptoInfoCont">
+        <h1 className="cryptoTitle">{props.title}</h1>
+        <div className="cryptoInfoSm">
+          <h2 className="cryptoPrice">
+            {props.price}
+            <span className="curCurrency"> {props.currency}</span>
+          </h2>
+          <h3 className="cryptoSymbol">{props.symbol}</h3>
         </div>
       </div>
     </div>

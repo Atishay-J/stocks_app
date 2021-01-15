@@ -5,7 +5,7 @@ import "react-dropdown/style.css";
 
 //=========================================
 //            DROPDOWN INIT
-//========================================
+//=========================================
 const options = [
   { label: "INR (₹)", value: "INR" },
   { label: "USD ($)", value: "USD" },
@@ -39,15 +39,17 @@ function Crypto2() {
   let url = "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=";
 
   //====================================================
-  //************************************************** */
-  //                     TESTING ZONE
-  //************************************************** */
+  //       Converting available currency to array
   //====================================================
 
   cryptoCurrency.map((e) => {
     cryptos.push(e.name.toLowerCase());
     console.log(cryptos);
   });
+
+  //=======================================================
+  //            DECLARING ASYNC API
+  //=======================================================
 
   let query = `${url}${curCurrency}&ids=${cryptos}`;
 
@@ -64,6 +66,10 @@ function Crypto2() {
     return data;
   }
 
+  //==========================================================
+  //                 USEEFFECT HOOK
+  //==========================================================
+
   useEffect(() => {
     getData().then((data) => {
       console.log("DATA FROM ASYNC ", data);
@@ -71,8 +77,6 @@ function Crypto2() {
       setIsLoading(false);
     });
   }, [curCurrency]);
-
-  //************************************************* */
 
   //============================================
   //            CHANGE CURRENCY
@@ -84,8 +88,9 @@ function Crypto2() {
   }
   console.log(curCurrency);
   console.log("DAaaatttaaa", cryptoData);
+
   //============================================
-  //*******************************************/
+  //*************** RETURN  ******************/
   //============================================
   return (
     <div>
@@ -100,24 +105,14 @@ function Crypto2() {
       ) : (
         Object.keys(cryptoData).map((e) => {
           return (
-            <div className="cryptoMainCont">
-              <div className="cryptoImgCont">
-                <img
-                  className="cryptoImg"
-                  alt="Crpyto Image"
-                  src={cryptoData[e]["image"]}
-                />
-              </div>
-              <div className="cryptoInfoCont">
-                <h1 className="cryptoTitle">{cryptoData[e]["name"]}</h1>
-                <div className="cryptoInfoSm">
-                  <h2 className="cryptoPrice">
-                    {cryptoData[e]["current_price"]}
-                  </h2>
-                  <h3 className="cryptoSymbol">{cryptoData[e]["symbol"]}</h3>
-                </div>
-              </div>
-            </div>
+            <DataCard
+              key={cryptoData[e]["id"]}
+              image={cryptoData[e]["image"]}
+              title={cryptoData[e]["name"]}
+              currency={curCurrency}
+              price={cryptoData[e]["current_price"]}
+              symbol={cryptoData[e]["symbol"]}
+            />
           );
         })
       )}
