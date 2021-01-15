@@ -101,8 +101,22 @@ function Crypto2() {
         Object.keys(cryptoData).map((e) => {
           return (
             <div className="cryptoMainCont">
-              <h1>{cryptoData[e]["name"]}</h1>
-              <h2 className="cryptoPrice">{cryptoData[e]["current_price"]}</h2>
+              <div className="cryptoImgCont">
+                <img
+                  className="cryptoImg"
+                  alt="Crpyto Image"
+                  src={cryptoData[e]["image"]}
+                />
+              </div>
+              <div className="cryptoInfoCont">
+                <h1 className="cryptoTitle">{cryptoData[e]["name"]}</h1>
+                <div className="cryptoInfoSm">
+                  <h2 className="cryptoPrice">
+                    {cryptoData[e]["current_price"]}
+                  </h2>
+                  <h3 className="cryptoSymbol">{cryptoData[e]["symbol"]}</h3>
+                </div>
+              </div>
             </div>
           );
         })
