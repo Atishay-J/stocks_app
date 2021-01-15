@@ -6,8 +6,9 @@ import "react-dropdown/style.css";
 function Crypto() {
   const [curCurrency, setCurCurrency] = useState("INR");
   const [gotError, setGotError] = useState(false);
-  // const [cryptoData, setCryptoData] = useState([]);
+  const [cryptoData, setCryptoData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [curQuery, setCurQuery] = useState(null);
   let ApiKey = process.env.REACT_APP_API_KEY;
   let ApiUrl =
     "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=";
@@ -16,7 +17,7 @@ function Crypto() {
 
   let output;
   let query;
-  let cryptoData = [];
+  // let cryptoData = [];
 
   const options = [
     { label: "INR (₹)", value: "INR" },
@@ -38,57 +39,86 @@ function Crypto() {
   //                GETTING VALUE FROM ASYNC FETCH
   //===================================================================
 
-  useEffect(() => {
-    async function doFetch() {
-      let response = await fetch(query);
-      let data = await response.json();
-      console.log("INSIDE AYSNC FETCH");
-
-      return data;
+  // function btc() {
+  //   // curQuery = `${ApiUrl}${cryptocu}&to_currency=${curCurrency}&apikey=${ApiKey}`;
+  //   console.log(cryptoCurrency[0].symbol);
+  // }
+  // btc();
+  async function call() {
+    for (let i = 0; i < cryptoCurrency.length; i++) {
+      // console.log(cryptoCurrency[i].symbol);
+      setCurQuery(
+        `${ApiUrl}${cryptoCurrency[i].symbol}&to_currency=${curCurrency}&apikey=${ApiKey}`
+      );
     }
+    console.log(curQuery);
+    let response = await fetch(curQuery);
+    let data = response.json();
+    console.log("CALLLEEEDDD", data);
+  }
+  useEffect(() => {
+    call();
+    console.log("changer", curQuery);
+  }, [curQuery]);
 
-    cryptoCurrency.forEach((e) => {
-      console.log("loggggg");
-      console.log(e.symbol);
-      let curSymbol = e.symbol;
-      query = `${ApiUrl}${curSymbol}&to_currency=${curCurrency}&apikey=${ApiKey}`;
+  // function getCryptos() {
+  //   cryptoCurrency.map((item) => {
+  //     query = `${ApiUrl}${item.symbol}&to_currency=${curCurrency}&apikey=${ApiKey}`;
+  //     callme();
+  //   });
+  // }
+  // function callme() {
+  //   console.log("called");
+  // }
 
-      doFetch().then((result) => {
-        if (result.Note) {
-          console.log("GOT AN BIIGGG ERROR");
-          setGotError(true);
-        } else {
-          // console.log("LAST LOGGGGG");
-          // console.log("FROM LAST DATA ", result);
-          cryptoData.push(result["Realtime Currency Exchange Rate"]);
-          setGotError(false);
-          setIsLoading(false);
-          // setCryptoData([...cryptoData, { result }]);
-          // console.log(cryptoData);
-        }
-      });
+  // async function doFetch() {
+  //   // cryptoCurrency.forEach((e) => {
+  //   //   console.log("loggggg");
+  //   //   console.log(e.symbol);
+  //   //   let curSymbol = e.symbol;
+  //   //   query = `${ApiUrl}${curSymbol}&to_currency=${curCurrency}&apikey=${ApiKey}`;
+  //   // },
+  //   // cryptoCurrency.map((item) => console.log("IMTEE", item));
+  //   // let response = await fetch(query);
+  //   // let data = await response.json();
+  //   // console.log("INSIDE AYSNC FETCH");
+  //   // return data;
+  // }
+  // doFetch();
+  // useEffect(() => {
 
-      //=======================================================
-      //=======================================================
-    });
-  }, [curCurrency]);
+  //     doFetch().then((result) => {
+  //       if (result.Note) {
+  //         console.log("GOT AN BIIGGG ERROR");
+  //         setGotError(true);
+  //       } else {
+  //         // console.log("LAST LOGGGGG");
+  //         // console.log("FROM LAST DATA ", result);
+  //         cryptoData.push(result["Realtime Currency Exchange Rate"]);
+  //         setGotError(false);
+  //         setIsLoading(false);
+  //         // setCryptoData([...cryptoData, { result }]);
+  //         // console.log(cryptoData);
+  //       }
+  //     });
+
+  //     //=======================================================
+  //     //=======================================================
+  //   });
+  // }, [curCurrency]);
 
   // useEffect(() => {
   //   console.log("STATE CHANGED");
   // }, [cryptoData]);
+
   //=============================================================================
   //                             CHANGING CURRENCY
   //=============================================================================
-  function changeCurrency(e) {
-    // setCryptoData([]);
-    cryptoData = [];
-    setCurCurrency(e.value);
-    console.log(curCurrency);
-  }
+
   //==========================================================================
   //                        OUTPUT
   //=========================================================================
-  console.log(gotError);
+  // console.log(gotError);
   // if (gotError) {
   //   console.log(gotError);
   //   output = (
@@ -150,39 +180,39 @@ function Crypto() {
   //     </div>
   //   );
   // }
-  if (gotError) {
-    console.log(gotError);
-    output = (
-      <div className="errorCont">
-        <h2 className="errorMsg">
-          Sorry! We have reached the limit of API calls, Please check after
-          sometime
-        </h2>
-        <h3 className="errorMsgSm">Check Console for more info.</h3>
-      </div>
-    );
-  } else {
-    output =
-      isLoading &&
-      (<h1>Loading...</h1>)(
-        <div className="listCont">
-          {cryptoData.map((e) => (
-            <DataCard
-              title={e["2. From_Currency Name"]}
-              currCode={e["1. From_Currency Code"]}
-              outputCurr={e["4. To_Currency Name"]}
-              exchangeRate={e["5. Exchange Rate"]}
-            />
-          ))}
-        </div>
-      );
-  }
+  // if (gotError) {
+  //   console.log(gotError);
+  //   output = (
+  //     <div className="errorCont">
+  //       <h2 className="errorMsg">
+  //         Sorry! We have reached the limit of API calls, Please check after
+  //         sometime
+  //       </h2>
+  //       <h3 className="errorMsgSm">Check Console for more info.</h3>
+  //     </div>
+  //   );
+  // } else {
+  //   output =
+  //     isLoading &&
+  //     (<h1>Loading...</h1>)(
+  //       <div className="listCont">
+  //         {cryptoData.map((e) => (
+  //           <DataCard
+  //             title={e["2. From_Currency Name"]}
+  //             currCode={e["1. From_Currency Code"]}
+  //             outputCurr={e["4. To_Currency Name"]}
+  //             exchangeRate={e["5. Exchange Rate"]}
+  //           />
+  //         ))}
+  //       </div>
+  //     );
+  // }
 
   //========================================================================
   //========================================================================
   return (
     <div className="cryptoCont">
-      <div className="selectorsCont">
+      {/* <div className="selectorsCont">
         <Dropdown
           options={options}
           onChange={changeCurrency}
@@ -191,7 +221,7 @@ function Crypto() {
         />
       </div>
 
-      {output}
+      {output} */}
     </div>
   );
 }

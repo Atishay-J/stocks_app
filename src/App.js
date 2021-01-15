@@ -8,7 +8,7 @@ import ProfitLossCalc from "./ProfitLossCalc";
 import GoldSilver from "./GoldSilver";
 import News from "./News";
 import Calculators from "./Calculators";
-import Crypto from "./Crypto";
+import Crypto2 from "./Crypto2";
 import Error from "./Error";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Route exact path="/" component={ProfitLossCalc} />
         <Route path="/goldandsilver" component={GoldSilver} />
         <Route path="/news" component={News} />
-        <Route path="/crypto" component={Crypto} />
+        <Route path="/crypto" component={Crypto2} />
         <Route path="/calculators" component={Calculators} />
 
         <Route component={Error} />

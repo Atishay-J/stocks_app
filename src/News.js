@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import DataCard from "./DataCard";
 import "./news.css";
+
 function News() {
   const [newsData, setNewsData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const ApiKey = process.env.REACT_APP_NEWS_API_KEY;
   const query = `http://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${ApiKey}`;
   console.log(query);
+
+  //=============================================================
+  //                    FETCHING DATA
+  //=============================================================
+
   async function getNews() {
     let response = await fetch(query);
     let data = await response.json();
@@ -14,16 +20,26 @@ function News() {
     // console.log(data["articles"]);
     setNewsData(data["articles"]);
   }
+
+  //=============================================================
+  //                    USE EFFECT
+  //=============================================================
+
   useEffect(() => {
     getNews();
     setIsLoading(false);
   }, []);
 
+  //=============================================================
+  //                    OPEN NEWS ON CLICK
+  //=============================================================
   function openNews(url) {
     window.open(url, " _blank");
   }
 
-  console.log("NEWS DATA", newsData);
+  //=============================================
+  //=============================================
+
   return (
     <div className="newsMainCont">
       {isLoading ? (
