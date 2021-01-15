@@ -1,9 +1,42 @@
-import React from "react";
-import DataCard from "./DataCard";
+import React, { useState } from "react";
+import CalculatorCard from "./CalculatorCard";
+import CalcScreen from "./CalcScreen";
+import assets from "./ImgAssets";
 function Calculators() {
-  return (
+  const [calcScreen, setCalcScreen] = useState(false);
+
+  function showCalc() {
+    console.log("ssss");
+    setCalcScreen(true);
+  }
+
+  return calcScreen ? (
+    <CalcScreen />
+  ) : (
     <div className="calculatorsCont">
-      <DataCard title="Calculators" />
+      <h1 className="CalculatorHead">Calculate EMI'S</h1>
+      <div className="caclCards">
+        <CalculatorCard
+          title="Two Wheeler"
+          img={assets.twoWheeler}
+          onclick={showCalc}
+        />
+        <CalculatorCard
+          title="Four Wheeler"
+          img={assets.fourWheeler}
+          onclick={showCalc}
+        />
+        <CalculatorCard
+          title="Home Loan"
+          img={assets.house}
+          onclick={showCalc}
+        />
+        <CalculatorCard
+          title="Personal Loan"
+          img={assets.Personal}
+          onclick={showCalc}
+        />
+      </div>
     </div>
   );
 }

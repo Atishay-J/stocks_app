@@ -1,0 +1,16 @@
+.calculatorCont {
+  background: rgb(180, 179, 179);
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.calcImg {
+  width: 5rem;
+  height: 5rem;
+}

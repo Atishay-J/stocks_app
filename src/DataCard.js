@@ -4,7 +4,7 @@ function DataCard(props) {
   return (
     <div className="cryptoMainCont">
       <div className="cryptoImgCont">
-        <img className="cryptoImg" alt="Crpyto Image" src={props.image} />
+        <img className="cryptoImg" alt="Image" src={props.image} />
       </div>
       <div className="cryptoInfoCont">
         <h1 className="cryptoTitle">{props.title}</h1>
