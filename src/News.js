@@ -8,7 +8,6 @@ function News() {
   const [isLoading, setIsLoading] = useState(true);
   const ApiKey = process.env.REACT_APP_NEWS_API_KEY;
   const query = `http://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${ApiKey}`;
-  console.log(query);
 
   //=============================================================
   //                    FETCHING DATA
@@ -62,6 +61,7 @@ function News() {
         newsData.map((e, index) => {
           return (
             <div
+              key={index}
               className="newsCont"
               onClick={() => {
                 openNews(e.url);
