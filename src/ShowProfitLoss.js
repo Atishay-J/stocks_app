@@ -19,14 +19,15 @@ function ShowProfitLoss(props) {
 
   let calculate = (props.stockData.close - stockPrice).toFixed(4);
   if (calculate > 0) {
-    answer = "Yayy, You made profit";
+    answer = "Hurray...You made profit";
     specifier = "made";
     profitOrLoss.text = "Total Profit";
+    profitOrLoss.color = "rgba(238, 191, 12, 0.9)";
   } else {
     answer = "sorry for your loss";
     specifier = "lost";
     profitOrLoss.text = "Total Loss";
-    profitOrLoss.color = "rgba(229, 7, 59, 0.4)";
+    profitOrLoss.color = "rgba(223, 0, 52, 0.9)";
   }
   let totalPL = (calculate * numOfStocks).toFixed(4);
   console.log("THE PROPS ARE ", props);
@@ -41,8 +42,8 @@ function ShowProfitLoss(props) {
         label: "# of Votes",
         data: [props.stockData.close, stockPrice, totalPL],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
+          "rgba(0,63,92,1)",
+          "rgba(64,232,111,1)",
           profitOrLoss.color,
         ],
       },
@@ -54,16 +55,11 @@ function ShowProfitLoss(props) {
 
   return (
     <div className="showProfitLossCont">
-      <div
-        style={{
-          margin: "auto",
-          background: "#fafaf2",
-        }}
-      >
+      <div className="graphCont">
         <Doughnut
           data={data}
-          height={300}
-          width={300}
+          height={200}
+          width={200}
           options={{
             responsive: true,
             maintainAspectRatio: false,
@@ -73,11 +69,13 @@ function ShowProfitLoss(props) {
       </div>
       <div className="profitLossCard">
         <h2 className="cardTitle">{props.curstock}</h2>
+        <h2 className="cardSub">
+          Current Stock Price Is {props.stockData.close}
+        </h2>
         <h3 className="cardSubsm">{answer}</h3>
         <h4 className="cardSubsm">
           The total amount you {specifier} is {totalPL}
         </h4>
-        <h2 className="cardSub"> current price is {props.stockData.close}</h2>
       </div>
     </div>
   );

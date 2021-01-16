@@ -1,19 +1,120 @@
+.outputTitle {
+  height: 4rem;
+  line-height: 4rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  background: #ffffff;
+  box-shadow: 5px 5px 10px #c9c9c9, -5px -5px 10px #ffffff;
+}
 .stockCardCont {
-  font-family: var(--fontText);
-  background: rgb(206, 206, 206);
+  /* font-family: var(--fontText); */
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 5px 5px 10px #c9c9c9, -5px -5px 10px #ffffff;
+  padding: 1rem 0 0 2rem;
+  margin-top: 1rem;
 }
 .stockCardInfoCont {
-  border: 1px solid red;
+  width: 95%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .stockCardTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
   cursor: pointer;
 }
 .stockCardSymbol {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--fontColGray);
 }
 .stockCardRegion {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--fontColGray);
+}
+
+/* MAIN PAGE STYLE */
+
+#mainCalcCont {
+  margin: auto;
+  margin-top: 2rem;
+  border-radius: 20px;
+  width: 90%;
+}
+.calcHeading {
+  font-size: 1.4rem;
+  text-align: center;
+}
+.inputCont {
+  /* box-shadow: 7px 10px 19px -8px rgba(0, 0, 0, 0.81); */
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 5px 5px 10px #c9c9c9, -5px -5px 10px #ffffff;
+}
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+.inputField {
+  border: none;
+  height: 2.7rem;
+  border-radius: 10px;
+  background: #f2f2f2;
+  box-shadow: inset 5px 5px 5px #b1b1b1, inset -5px -5px 5px #ffffff;
+  padding-left: 8px;
+  width: 70%;
+  margin-top: 1rem;
+}
+.submitBtn {
+  border: none;
+  width: 8rem;
+  height: 2.5rem;
+  margin: auto;
+  border-radius: 15px;
+  background: #f2f2f2;
+  box-shadow: 5px 5px 5px #b1b1b1, -5px -5px 5px #ffffff;
+  font-family: var(--fontHead);
+  margin-top: 1.4rem;
+  color: #353535;
+  cursor: pointer;
+}
+.outputDiv {
+  margin-top: 10rem;
+}
+.graphCont {
+  margin-top: 4rem;
+}
+.showProfitLossCont {
+  margin-top: 2rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 5px 5px #b1b1b1, -5px -5px 5px #ffffff;
+}
+.profitLossCard {
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start; */
+}
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.cardSubsm {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.cardSub {
+  font-size: 1.1rem;
+  font-weight: 400;
 }

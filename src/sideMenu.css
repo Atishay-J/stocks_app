@@ -1,7 +1,7 @@
 #sideMenuCont {
   display: flex;
   justify-content: space-around;
-  background: rgb(233, 232, 232);
+  /* background: rgb(233, 232, 232); */
   width: 100%;
   height: 3.8rem;
   padding: 0 0.2rem 0 0.2rem;
@@ -9,23 +9,25 @@
   bottom: 0;
 }
 .sideBtnCont {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   min-width: 3.8rem;
+  padding: 0.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 5px 5px 10px #c9c9c9, -5px -5px 10px #ffffff;
 }
 .sideBtnImg {
   max-width: 100%;
   height: 1.4rem;
-  border: 1px solid purple;
   margin-top: 0.4rem;
 }
 .sideBtnName {
   /* font-size: 1.8vw; */
   font-size: calc(8px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   white-space: nowrap;
-  border: 1px solid red;
   margin-top: 0.2rem;
 }

@@ -1,6 +1,6 @@
 // ** Init API **
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import StockCard from "./StockCard";
 import ShowProfitLoss from "./ShowProfitLoss";
 import Skeleton from "react-loading-skeleton";
@@ -66,6 +66,7 @@ function ProfitLossCalc() {
     low: "",
   });
   const [showLoader, setShowLoader] = useState();
+  const outputDiv = useRef();
 
   //=============================================================
   //              FINDING SIMILAR STOCKS LIST (ASYNC FETCH 1)
@@ -108,6 +109,12 @@ function ProfitLossCalc() {
       console.log("LOADER VALUE FROM FIRST FETCH ", loader);
 
       setShowResult(false);
+      window.scrollTo({
+        top: outputDiv.current.offsetTop,
+        behavior: "smooth",
+      });
+      let elem = document.getElementById("removeable");
+      // elem.remove();
     });
   }
 
@@ -175,7 +182,22 @@ function ProfitLossCalc() {
   let output;
 
   if (showLoader) {
-    output = <Skeleton />;
+    output = (
+      <>
+        <div className="newsSkeletonCont">
+          <Skeleton height={70} />
+          <Skeleton height={20} count={5} />
+        </div>
+        <div className="newsSkeletonCont">
+          <Skeleton height={70} />
+          <Skeleton height={20} count={5} />
+        </div>
+        <div className="newsSkeletonCont">
+          <Skeleton height={70} />
+          <Skeleton height={20} count={5} />
+        </div>
+      </>
+    );
   } else {
     // output = <h1>LOaded...</h1>;
     showResult
@@ -188,7 +210,8 @@ function ProfitLossCalc() {
           />
         ))
       : (output = stockList && (
-          <div>
+          <div className="outputDiv" ref={outputDiv}>
+            {/* <h2 className="outputTitle">Found Similar stocks, Select yours</h2> */}
             {stockList.map((item, index) => (
               <StockCard
                 key={index}
@@ -206,8 +229,8 @@ function ProfitLossCalc() {
     <div id="mainCalcCont">
       <h4 className="calcHeading">Calculate Profit / Loss</h4>
 
-      <div className="inputCont">
-        <form onSubmit={findStock}>
+      <div className="inputCont" id="removeable">
+        <form onSubmit={findStock} className="inputForm">
           <input
             required
             className="inputField"
