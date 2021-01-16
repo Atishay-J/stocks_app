@@ -14,8 +14,8 @@ function Calculators() {
     <CalcScreen />
   ) : (
     <div className="calculatorsCont">
-      <h1 className="CalculatorHead">Calculate EMI'S</h1>
-      <div className="caclCards">
+      <h1 className="calculatorHead">Calculate EMI's</h1>
+      <div className="calcCards">
         <CalculatorCard
           title="Two Wheeler"
           img={assets.twoWheeler}

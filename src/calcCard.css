@@ -1,16 +1,159 @@
-.calculatorCont {
-  background: rgb(180, 179, 179);
-  width: 40%;
+/* 
+=====================================================
+****************** CALCULATOR PAGE ******************* 
+=====================================================*/
+
+.calcScreenCont {
+  width: 80%;
   margin: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+.calcScreenForm {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 3rem;
+  padding: 2rem;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #f7f7f7, #ffffff);
+  box-shadow: 5px 5px 10px #dcdcdc, -5px -5px 10px #ffffff;
+}
+.calcTitle {
+  text-align: center;
+  font-size: 1rem;
+  font-family: var(--fontSoft);
+  color: var(--fontColLight);
+  font-weight: 500;
+}
+.inputHolder {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.calcScreenInput {
+  border: none;
+  height: 2.7rem;
+  border-radius: 10px;
+  background: #f2f2f2;
+  box-shadow: inset 5px 5px 5px #b1b1b1, inset -5px -5px 5px #ffffff;
+  padding-left: 8px;
+  width: 70%;
+}
+.inputSymbols {
+  width: 30%;
+  font-family: var(--fontHead);
+  font-size: 1.1rem;
+  padding-left: 0.4rem;
+  font-weight: 400;
+  color: var(--fontCol1);
+}
+.calcScreenSubmit {
+  border: none;
+  width: 8rem;
+  height: 2.5rem;
+  margin: auto;
+  border-radius: 15px;
+  background: #f2f2f2;
+  box-shadow: 5px 5px 5px #b1b1b1, -5px -5px 5px #ffffff;
+  font-family: var(--fontHead);
+  margin-top: 1.4rem;
+  color: #353535;
+  cursor: pointer;
+}
+.calcResultCont {
+  margin-top: 2rem;
+  border-radius: 20px;
+  width: 100%;
+  padding-bottom: 0.4rem;
+
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--fontColLight);
+  font-family: var(--fontSoft);
+  white-space: nowrap;
+  box-shadow: 2px 6px 14px 2px rgba(41, 41, 41, 0.34);
+}
+
+.calcResultTextCont {
+  /* width: 47%; */
+  margin: auto;
+  padding: 1rem;
+}
+.calcResultGraph {
+  /* width: 47%; */
+  padding: 1rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.emi {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.interest {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.ttlAmt {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.calcValues {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--fontColGray);
+}
+
+/* 
+=====================================================
+****************** CALC MAIN PAGE ******************* 
+=====================================================*/
+
+.calculatorHead {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--fontColLight);
+}
+.calcCards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.calculatorCont {
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 6px 6px 19px #b5b5b5, -6px -6px 19px #ffffff;
+  width: 45%;
+  height: 9rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   margin-top: 2rem;
   cursor: pointer;
 }
+.calculatorsCont {
+  padding: 1rem;
+}
 
 .calcImg {
-  width: 5rem;
-  height: 5rem;
+  max-width: 100%;
+  height: 2.8rem;
+  margin-top: 1.2rem;
+}
+.calcTitle {
+  margin-top: -1rem;
+  font-size: 1rem;
+  font-weight: 400;
 }

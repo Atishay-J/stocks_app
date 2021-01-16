@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { Doughnut } from "react-chartjs-2";
 
 function CalcScreen() {
   const [showResult, setShowResult] = useState(false);
-  const [emi, setEmi] = useState("");
+  const [result, setResult] = useState({
+    instal: "",
+    interest: "",
+    total: "",
+    princi: "",
+  });
   let amount, rate, tenure;
-  let interestPayble, totalAmt;
 
+  //=====================================================
+  //                GETTING VALUES
+  //====================================================
   function getValues() {
     amount = document.getElementById("loanAmt").value;
     rate = document.getElementById("roi").value;
     tenure = document.getElementById("tenure").value;
   }
-
+  //=====================================================
+  //                CALCULATE ON CLICK
+  //====================================================
   function calculate(e) {
     e.preventDefault();
     getValues();
@@ -19,8 +29,6 @@ function CalcScreen() {
     console.log("rate ", rate);
     console.log("tenure ", tenure);
 
-    // let interest = (amount * (rate * 0.1)) / tenure;
-    // let emi = (amount / tenure + interest).toFixed(2);
     let r = rate / (12 * 100);
 
     let x = amount * r;
@@ -30,17 +38,42 @@ function CalcScreen() {
     let emi = ans.toFixed(2);
 
     console.log("EMI ", emi);
-    // console.log("interest", interest);
-    // console.log("Output ", output);
 
-    setEmi(emi);
+    let totalAmt = (emi * tenure).toFixed(2);
+
+    let totalInterest = (totalAmt - amount).toFixed(2);
+
+    setResult({
+      instal: emi,
+      interest: totalInterest,
+      total: totalAmt,
+      princi: amount,
+    });
     setShowResult(true);
   }
 
+  //===========================================================
+  //                  GRAPH
+  //==========================================================
+  const data = {
+    labels: ["Principal Amount", " Total Interest"],
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [result.princi, result.interest],
+        backgroundColor: ["rgba(0,63,92,1)", "rgba(64,232,111,1)"],
+      },
+    ],
+  };
+
+  //========================================================
+  //********************* RETURN *********************** */
+  //========================================================
   return (
     <>
       <div className="calcScreenCont">
         <form className="calcScreenForm" onSubmit={calculate}>
+          <h1 className="calcTitle">Calculate EMI</h1>
           <div className="inputHolder">
             <input
               required
@@ -74,7 +107,7 @@ function CalcScreen() {
               min="1"
               placeholder="Loan Tenure (In months)"
             />
-            <span className="inputSymbols">Months</span>
+            <span className="inputSymbols">months</span>
           </div>
           <div className="inputHolder">
             <input
@@ -86,7 +119,31 @@ function CalcScreen() {
         </form>
         {showResult && (
           <div className="calcResultCont">
-            <h1>result {emi}</h1>
+            <div className="calcResultTextCont">
+              <h1 className="emi">
+                EMI: <span className="calcValues"> {result.instal}</span>
+              </h1>
+              <h2 className="interest">
+                Total Interest:
+                <span className="calcValues"> {result.interest}</span>
+              </h2>
+              <h2 className="ttlAmt">
+                Total Amount:{" "}
+                <span className="calcValues"> {result.total}</span>
+              </h2>
+            </div>
+            <div className="calcResultGraph">
+              <Doughnut
+                data={data}
+                height={150}
+                width={150}
+                options={{
+                  responsive: false,
+                  maintainAspectRatio: false,
+                  defaultFontSize: "14px",
+                }}
+              />
+            </div>
           </div>
         )}
       </div>
