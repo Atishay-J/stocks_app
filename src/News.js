@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import DataCard from "./DataCard";
+
 import "./news.css";
+import Skeleton from "react-loading-skeleton";
 
 function News() {
   const [newsData, setNewsData] = useState(null);
@@ -26,8 +27,7 @@ function News() {
   //=============================================================
 
   useEffect(() => {
-    getNews();
-    setIsLoading(false);
+    getNews().then(() => setIsLoading(false));
   }, []);
 
   //=============================================================
@@ -43,7 +43,20 @@ function News() {
   return (
     <div className="newsMainCont">
       {isLoading ? (
-        <h1>Loading...</h1>
+        <>
+          <div className="newsSkeletonCont">
+            <Skeleton height={70} />
+            <Skeleton height={20} count={5} />
+          </div>
+          <div className="newsSkeletonCont">
+            <Skeleton height={70} />
+            <Skeleton height={20} count={5} />
+          </div>
+          <div className="newsSkeletonCont">
+            <Skeleton height={70} />
+            <Skeleton height={20} count={5} />
+          </div>
+        </>
       ) : (
         newsData &&
         newsData.map((e, index) => {

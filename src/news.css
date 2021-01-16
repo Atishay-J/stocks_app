@@ -1,5 +1,7 @@
 .newsCont {
-  background: rgb(211, 211, 211);
+  background: #ffffff;
+  box-shadow: 6px 6px 19px #b5b5b5, -6px -6px 19px #ffffff;
+  border-radius: 20px;
   width: 85%;
   margin: auto;
   margin-top: 1rem;
@@ -10,30 +12,42 @@
   cursor: pointer;
 }
 .newsImgCont {
-  /* background: rgb(119, 216, 81); */
-  width: 85%;
-  /* height: 400px; */
-  padding: 20px;
-  /* display: flex; */
+  width: 98%;
+  border-radius: 20px 20px 0 0;
+  padding: 0.2rem;
 }
 .newsImg {
   width: 100%;
-  height: 15rem;
+  height: 12rem;
   display: block;
   margin: auto;
   object-fit: fill;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 4px 6px 17px -5px rgba(0, 0, 0, 0.81);
 }
 .newsDataCont {
-  width: 85%;
-  border: 1px solid green;
+  /* width: 98%; */
+  /* border: 1px solid green; */
   font-size: 0.8rem;
+  padding: 0.9rem;
+}
+.newsTitle {
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 .newsDesc {
-  width: 100%;
+  /* width: 100%; */
+  font-size: calc(11px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  font-weight: 500;
 }
 .newsDataSmCont {
   display: flex;
   width: 80%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   justify-content: space-between;
+  font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+.newsSkeletonCont {
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
 }
