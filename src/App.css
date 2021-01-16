@@ -5,6 +5,11 @@
   --fontText: "Fira Sans", sans-serif;
   --fontHead: "Rubik", sans-serif;
 }
+.App {
+  /* FOR MAKING SPACE FOR MENU BAR BOTTOM */
+  margin: 0 0 3.8rem 0;
+  padding: 0 0 2rem 0;
+}
 .mainContainer {
   background: rgb(211, 152, 152);
 }

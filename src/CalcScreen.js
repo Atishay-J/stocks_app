@@ -15,13 +15,25 @@ function CalcScreen() {
   function calculate(e) {
     e.preventDefault();
     getValues();
+    console.log("amount ", amount);
+    console.log("rate ", rate);
+    console.log("tenure ", tenure);
 
-    let r = rate / (12 * 100); // one month interest
-    let t = tenure * 12; // one month period
-    let output = (amount * r * Math.pow(1 + r, t)) / (Math.pow(1 + r, t) - 1);
+    // let interest = (amount * (rate * 0.1)) / tenure;
+    // let emi = (amount / tenure + interest).toFixed(2);
+    let r = rate / (12 * 100);
 
-    console.log(emi);
-    setEmi(output);
+    let x = amount * r;
+    let y = Math.pow(1 + r, tenure);
+    let z = y - 1;
+    let ans = x * (y / z);
+    let emi = ans.toFixed(2);
+
+    console.log("EMI ", emi);
+    // console.log("interest", interest);
+    // console.log("Output ", output);
+
+    setEmi(emi);
     setShowResult(true);
   }
 
@@ -46,7 +58,9 @@ function CalcScreen() {
               className="calcScreenInput"
               id="roi"
               type="number"
-              min="1"
+              min="0"
+              max="100"
+              step="0.1"
               placeholder="Rate of Interest"
             />
             <span className="inputSymbols">%</span>

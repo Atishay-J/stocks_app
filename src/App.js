@@ -13,21 +13,23 @@ import Error from "./Error";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Switch>
-        {/* <Main /> */}
+    <>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          {/* <Main /> */}
 
-        <Route exact path="/" component={ProfitLossCalc} />
-        <Route path="/goldandsilver" component={GoldSilver} />
-        <Route path="/news" component={News} />
-        <Route path="/crypto" component={Crypto2} />
-        <Route path="/calculators" component={Calculators} />
+          <Route exact path="/" component={ProfitLossCalc} />
+          <Route path="/goldandsilver" component={GoldSilver} />
+          <Route path="/news" component={News} />
+          <Route path="/crypto" component={Crypto2} />
+          <Route path="/calculators" component={Calculators} />
 
-        <Route component={Error} />
-      </Switch>
+          <Route component={Error} />
+        </Switch>
+      </div>
       <SideMenu />
-    </div>
+    </>
   );
 }
 
