@@ -102,6 +102,13 @@ function GoldSilver() {
       />
       {isLoading ? (
         <h1>LOading...</h1>
+      ) : silverData["error"] || goldData["error"] ? (
+        <div className="errorCont">
+          <h1 className="errorTitle">
+            Sorry!!, We got Some error, please try again after sometime.
+          </h1>
+          <h3 className="errorEmoji">⚠️</h3>
+        </div>
       ) : (
         <div className="goldSilverCont">
           <DataCard

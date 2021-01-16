@@ -1,31 +1,88 @@
 .cryptoMainCont {
-  background: rgb(179, 168, 168);
+  width: 95%;
   display: flex;
   align-items: center;
+  margin: auto;
   margin-top: 1rem;
+  background: #ffffff;
+  box-shadow: 6px 6px 19px #b5b5b5, -6px -6px 19px #ffffff;
+  border-radius: 20px;
+  /* padding: 1rem; */
 }
 .cryptoImgCont {
-  border: 1px solid yellow;
+  margin-left: 1rem;
 }
 .cryptoImg {
   width: 5rem;
   height: 5rem;
-  border: 1px solid green;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffffff, #ebebeb);
+  box-shadow: 5px 5px 12px #b8b8b8, -5px -5px 12px #ffffff;
+  /* transform: rotate(25deg); */
+  animation: loadRotate 1s ease 1 normal;
+}
+@keyframes loadRotate {
+  from {
+    transform: rotate(27deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
 .cryptoInfoCont {
   width: 60%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-left: 1.8rem;
+}
+.cryptoTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.cryptoSymbol {
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 .cryptoInfoSm {
-  width: 30%;
+  /* width: 30%; */
   display: flex;
   justify-content: space-between;
-  border: 1px solid palegoldenrod;
+  margin-top: -1rem;
   font-size: 0.7rem;
 }
+.cryptoPrice {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+.curCurrency {
+  font-size: 0.8rem;
+}
 .dropdown {
-  border: 2px solid red;
-  width: 20%;
+  /* border: 2px solid red; */
+  width: 30%;
+  border: none;
+  background: #ffffff;
+  box-shadow: 5px 5px 10px #c9c9c9, -5px -5px 10px #ffffff;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-family: var(--fontHead);
+  font-weight: 400;
+  color: var(--fontColGray);
+}
+.errorCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 2rem;
+  width: 80%;
+}
+.errorTitle {
+  font-size: 1.5rem;
+}
+.errorEmoji {
+  font-size: 4rem;
+  filter: grayscale(70);
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DataCard from "./DataCard";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import Skeleton from "react-loading-skeleton";
 
 //=========================================
 //            DROPDOWN INIT
@@ -102,7 +103,20 @@ function Crypto2() {
         placeholder="Select an option"
       />
       {isLoading ? (
-        <h1>Loading...</h1>
+        <>
+          <div className="newsSkeletonCont">
+            <Skeleton height={70} />
+            <Skeleton height={20} count={3} />
+          </div>
+          <div className="newsSkeletonCont">
+            <Skeleton height={70} />
+            <Skeleton height={20} count={3} />
+          </div>
+          <div className="newsSkeletonCont">
+            <Skeleton height={70} />
+            <Skeleton height={25} count={3} />
+          </div>
+        </>
       ) : (
         Object.keys(cryptoData).map((e) => {
           return (
