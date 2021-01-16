@@ -18,11 +18,13 @@
   background: rgb(211, 152, 152);
 }
 a {
-  color: red;
+  color: var(--fontCol1);
+  font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  font-weight: 300;
   text-decoration: none;
 }
 .navActiveClass {
-  color: rgb(90, 201, 90);
+  color: rgb(201, 90, 109);
   text-decoration: none;
 }
 /* @media screen and (min-width: 640px) {

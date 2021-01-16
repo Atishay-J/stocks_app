@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 
 function CalcScreen() {
@@ -25,9 +25,6 @@ function CalcScreen() {
   function calculate(e) {
     e.preventDefault();
     getValues();
-    console.log("amount ", amount);
-    console.log("rate ", rate);
-    console.log("tenure ", tenure);
 
     let r = rate / (12 * 100);
 
@@ -36,8 +33,6 @@ function CalcScreen() {
     let z = y - 1;
     let ans = x * (y / z);
     let emi = ans.toFixed(2);
-
-    console.log("EMI ", emi);
 
     let totalAmt = (emi * tenure).toFixed(2);
 

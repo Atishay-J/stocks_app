@@ -6,7 +6,6 @@ function Calculators() {
   const [calcScreen, setCalcScreen] = useState(false);
 
   function showCalc() {
-    console.log("ssss");
     setCalcScreen(true);
   }
 

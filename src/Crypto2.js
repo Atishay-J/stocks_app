@@ -45,7 +45,6 @@ function Crypto2() {
 
   cryptoCurrency.map((e) => {
     cryptos.push(e.name.toLowerCase());
-    console.log(cryptos);
   });
 
   //=======================================================
@@ -73,7 +72,6 @@ function Crypto2() {
 
   useEffect(() => {
     getData().then((data) => {
-      console.log("DATA FROM ASYNC ", data);
       setCryptoData(data);
       setIsLoading(false);
     });
@@ -87,8 +85,6 @@ function Crypto2() {
 
     setCurCurrency(e.value);
   }
-  console.log(curCurrency);
-  console.log("DAaaatttaaa", cryptoData);
 
   //============================================
   //*************** RETURN  ******************/

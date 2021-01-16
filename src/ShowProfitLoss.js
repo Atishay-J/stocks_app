@@ -30,7 +30,6 @@ function ShowProfitLoss(props) {
     profitOrLoss.color = "rgba(223, 0, 52, 0.9)";
   }
   let totalPL = (calculate * numOfStocks).toFixed(4);
-  console.log("THE PROPS ARE ", props);
 
   //==================================================================
   //                DATA FOR GRAPH

@@ -17,7 +17,6 @@ const ApiKey = process.env.REACT_APP_API_KEY;
 //   let searchInput = event.target.value;
 //   let query = `${apiUrl}keywords=${searchInput}&apikey=${ApiKey}`;
 
-//   console.log(query);
 //   if (searchInput === "") {
 //     console.log("No INPUT");
 //   } else {
@@ -39,7 +38,6 @@ let buyingPrice;
 let curStock;
 let curData = "";
 var stocksWithSimilarName = [];
-let loader = true;
 
 //======================= GET USER INPUT VALUES========================
 
@@ -47,8 +45,6 @@ function getValues() {
   stockName = document.getElementById("stockNameInput").value;
   numOfStocks = document.getElementById("numberOfStocksInput").value;
   buyingPrice = document.getElementById("buyingPriceInput").value;
-
-  console.log(stockName, "\n", numOfStocks, "\n", buyingPrice);
 }
 
 //===============================================================================
@@ -58,13 +54,13 @@ function ProfitLossCalc() {
   const [stockList, setStockList] = useState([]);
   const [selectedStock, setSelectedStock] = useState();
   const [showResult, setShowResult] = useState(false);
-  const [selectedStockData, setSelectedStockData] = useState({
-    open: "",
-    close: "",
-    volume: "",
-    high: "",
-    low: "",
-  });
+  // const [selectedStockData, setSelectedStockData] = useState({
+  //   open: "",
+  //   close: "",
+  //   volume: "",
+  //   high: "",
+  //   low: "",
+  // });
   const [showLoader, setShowLoader] = useState();
   const outputDiv = useRef();
 
@@ -76,12 +72,10 @@ function ProfitLossCalc() {
     setShowLoader(true);
     getValues();
     let query = `${apiUrl}keywords=${stockName}&apikey=${ApiKey}`;
-    console.log("API URL IS ", query);
 
     let response = await fetch(query);
     let data = await response.json();
 
-    console.log("FIRST ASYNC FETCH DATA IS (INFUNCTION)", data);
     setShowLoader(false);
     return data;
   }
@@ -94,7 +88,7 @@ function ProfitLossCalc() {
     form.preventDefault();
     getSimilarStocks().then((result) => {
       setShowLoader(true);
-      console.log("FIRST ASYNC FETCH RESULT IS (CALLING) ", result);
+
       stocksWithSimilarName = result.bestMatches;
       let arr = stocksWithSimilarName.map((item, index) => {
         return {
@@ -106,14 +100,13 @@ function ProfitLossCalc() {
       setStockList(arr);
       // loader = false;
       setShowLoader(false);
-      console.log("LOADER VALUE FROM FIRST FETCH ", loader);
 
       setShowResult(false);
       window.scrollTo({
         top: outputDiv.current.offsetTop,
         behavior: "smooth",
       });
-      let elem = document.getElementById("removeable");
+      // let elem = document.getElementById("removeable");
       // elem.remove();
     });
   }
@@ -128,13 +121,11 @@ function ProfitLossCalc() {
     setSelectedStock(curStock);
 
     fetchSelectedStockData(curStock).then((result) => {
-      console.log("WE GOT THE FETCH RESULT ", result);
-
       let arr = "";
 
       for (let k in result["Time Series (Daily)"]) {
         arr = result["Time Series (Daily)"][k];
-        console.log("THE ARR GOT THE DATA", arr);
+
         break;
       }
       curData = {
@@ -144,8 +135,6 @@ function ProfitLossCalc() {
         close: arr["4. close"],
         volume: arr["5. volume"],
       };
-
-      console.log("THE CUR DATA IS ", curData);
 
       setShowResult(true);
 
@@ -157,18 +146,13 @@ function ProfitLossCalc() {
   //            GET DATA OF SELECTED STOCK (ASYNC FETCH 2)
   //==============================================================
 
-  let curStockKey = selectedStock;
-
   async function fetchSelectedStockData(value) {
     setShowLoader(true);
     let stockDataURL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${value}&apikey=${ApiKey}`;
 
-    console.log("API URL IS ", stockDataURL);
-
     let response = await fetch(stockDataURL);
     let data = await response.json();
 
-    console.log("FETCHING IS Going done NOW ", data);
     // setShowLoader(false);
     // loader = false;
     setShowLoader(false);

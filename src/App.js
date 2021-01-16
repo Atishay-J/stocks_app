@@ -1,8 +1,7 @@
 import "./App.css";
 import Navbar from "./Navbar";
 import SideMenu from "./SideMenu";
-import Main from "./Main";
-// import { Switch } from "@material-ui/core";
+
 import { Route, Switch } from "react-router-dom";
 import ProfitLossCalc from "./ProfitLossCalc";
 import GoldSilver from "./GoldSilver";
