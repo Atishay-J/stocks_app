@@ -46,11 +46,33 @@
   align-items: center;
   cursor: pointer;
   color: var(--fontCol1);
+  position: relative;
+}
+#dropDown {
+  display: none;
+  position: absolute;
+  background-color: var(--bgCol2);
+  min-width: 100%;
+  box-shadow: -5px 5px 10px var(--boxShd2), 5px -5px 10px var(--boxShd1);
+  padding: 3px 10px 3px 10px;
+  z-index: 1;
+  top: 3rem;
+  border-radius: 20px;
+}
+#loggedIn_cont:hover #dropDown {
+  display: block;
 }
 #loggedInName {
   font-size: 0.9rem;
   font-weight: 600;
   margin-left: 0.3rem;
+}
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 700;
+  background: var(--bgCol2);
 }
 .navIcons {
   color: var(--IconColor1);

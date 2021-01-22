@@ -5,14 +5,20 @@ import {
   Notifications,
   AccountCircleSharp,
   ExpandMoreSharp,
-  CallMergeOutlined,
 } from "@material-ui/icons";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Sidebar from "react-sidebar";
 import SideBarContent from "./SideBarContent";
+
 import "./navbar.css";
 function Navbar() {
   const [sidebarOpen, onSetSidebarOpen] = useState("");
   const [isDark, setDark] = useState(true);
+  const [login, setLogin] = useState({
+    name: "Scarlett",
+    state: "LogOut",
+    img: "#",
+  });
 
   function toggleDarkLight() {
     let values = document.querySelector(":root");
@@ -52,6 +58,15 @@ function Navbar() {
     }
   }
 
+  //=============================================================
+  //              LOGOUT FUNCITON
+  //=============================================================
+  function logOut() {
+    login.state == "LogOut"
+      ? setLogin({ name: "User", state: "LogIn", img: "#" })
+      : setLogin({ name: "Scarlett", state: "LogOut", img: "#" });
+  }
+
   return (
     <div id="nav_cont">
       <div className="side">
@@ -71,8 +86,15 @@ function Navbar() {
         {/* <Notifications id="notificationIcon" className="navIcons" /> */}
         <div id="loggedIn_cont">
           <AccountCircleSharp id="accountIcon" className="navIcons" />
-          <h4 id="loggedInName">Scarlett</h4>
+
+          <h4 id="loggedInName">{login.name}</h4>
           <ExpandMoreSharp id="expandIcon" className="navIcons" />
+          <div id="dropDown" onClick={logOut}>
+            <h5 className="logoutBtn">
+              {login.state}
+              <ExitToAppIcon />
+            </h5>
+          </div>
         </div>
       </div>
     </div>
