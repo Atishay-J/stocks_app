@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 
 function CalcScreen() {
@@ -9,6 +9,7 @@ function CalcScreen() {
     total: "",
     princi: "",
   });
+  const calcResultCont = useRef();
   let amount, rate, tenure;
 
   //=====================================================
@@ -113,7 +114,7 @@ function CalcScreen() {
           </div>
         </form>
         {showResult && (
-          <div className="calcResultCont">
+          <div className="calcResultCont" ref={calcResultCont}>
             <div className="calcResultTextCont">
               <h1 className="emi">
                 EMI: <span className="calcValues"> {result.instal}</span>

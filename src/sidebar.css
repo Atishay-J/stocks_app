@@ -1,0 +1,19 @@
+#sideBarCont {
+  border: 1px solid green;
+  width: 30%;
+  /* height: 100%; */
+
+  /* padding: 0.3rem; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.signatureDiv {
+  border: 1px solid red;
+
+  /* margin: auto; */
+}

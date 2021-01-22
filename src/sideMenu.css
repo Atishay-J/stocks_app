@@ -1,12 +1,14 @@
 #sideMenuCont {
   display: flex;
   justify-content: space-around;
-  /* background: rgb(233, 232, 232); */
+  /* background: rgb(255, 255, 255); */
+  background: var(--bgCol1);
   width: 100%;
   height: 3.8rem;
-  padding: 0 0.2rem 0 0.2rem;
+  padding: 0.5rem 0.2rem 0 0.2rem;
   position: fixed;
   bottom: 0;
+  border-top: 0.4px solid rgba(46, 46, 46, 0.13);
 }
 .sideBtnCont {
   /* border: 1px solid green; */
@@ -17,16 +19,21 @@
   justify-content: center;
   align-items: center;
   border-radius: 14px;
-  background: #ffffff;
-  box-shadow: 5px 5px 10px #c9c9c9, -5px -5px 10px #ffffff;
+  /* background: #ffffff; */
+  background: var(--bgCol1);
+  /* box-shadow: 5px 5px 10px var(--boxShd2), -5px -5px 10px var(--boxShd1); */
+
+  box-shadow: 3px 3px 10px var(--boxShd2), -3px -3px 10px var(--boxShd1);
 }
 .sideBtnImg {
   max-width: 100%;
   height: 1.4rem;
   margin-top: 0.4rem;
+  filter: invert(var(--invert));
 }
 .sideBtnName {
   /* font-size: 1.8vw; */
+  color: var(--fontCol1);
   font-size: calc(8px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   white-space: nowrap;
   margin-top: 0.2rem;

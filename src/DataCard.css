@@ -4,10 +4,13 @@
   align-items: center;
   margin: auto;
   margin-top: 1rem;
-  background: #ffffff;
-  box-shadow: 6px 6px 19px #b5b5b5, -6px -6px 19px #ffffff;
+  /* background: var(--bgCol1);
+  box-shadow: 6px 6px 19px var(--boxShd4), -6px -6px 19px var(--boxShd1); */
+  background: linear-gradient(145deg, var(--bgCol2), var(--bgCol1));
+  box-shadow: 5px 5px 10px var(--boxShd2), -5px -5px 10px var(--boxShd1);
   border-radius: 20px;
   /* padding: 1rem; */
+  color: var(--fontCol1);
 }
 .cryptoImgCont {
   margin-left: 1rem;
@@ -16,8 +19,8 @@
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background: linear-gradient(145deg, #ffffff, #ebebeb);
-  box-shadow: 5px 5px 12px #b8b8b8, -5px -5px 12px #ffffff;
+  background: linear-gradient(145deg, var(--bgCol1), var(--boxShd2));
+  box-shadow: 5px 5px 12px var(--boxShd4), -5px -5px 12px var(--boxShd1);
   /* transform: rotate(25deg); */
   animation: loadRotate 1s ease 1 normal;
 }
@@ -50,6 +53,7 @@
   justify-content: space-between;
   margin-top: -1rem;
   font-size: 0.7rem;
+  color: var(--fontCol1);
 }
 .cryptoPrice {
   font-size: 1.05rem;
@@ -57,19 +61,22 @@
 }
 .curCurrency {
   font-size: 0.8rem;
+  color: var(--fontColLight);
 }
 .dropdown {
   /* border: 2px solid red; */
   width: 30%;
   border: none;
-  background: #ffffff;
-  box-shadow: 5px 5px 10px #c9c9c9, -5px -5px 10px #ffffff;
+  /* background: var(--bgCol1); */
+
+  box-shadow: 5px 5px 10px var(--boxShd2), -5px -5px 10px var(--boxShd1);
   margin-top: 1rem;
   margin-left: 1rem;
   font-family: var(--fontHead);
   font-weight: 400;
   color: var(--fontColGray);
 }
+
 .errorCont {
   display: flex;
   flex-direction: column;

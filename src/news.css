@@ -1,6 +1,6 @@
 .newsCont {
-  background: #ffffff;
-  box-shadow: 6px 6px 19px #b5b5b5, -6px -6px 19px #ffffff;
+  background: var(--bgCol1);
+  box-shadow: 6px 6px 19px var(--boxShd4), -6px -6px 19px var(--boxShd1);
   border-radius: 20px;
   width: 85%;
   margin: auto;
@@ -23,7 +23,7 @@
   margin: auto;
   object-fit: fill;
   border-radius: 20px 20px 0 0;
-  box-shadow: 4px 6px 17px -5px rgba(0, 0, 0, 0.81);
+  box-shadow: 4px 6px 17px -5px var(--boxShdBlk2);
 }
 .newsDataCont {
   /* width: 98%; */
@@ -33,11 +33,13 @@
 }
 .newsTitle {
   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  color: var(--fontCol1);
 }
 .newsDesc {
   /* width: 100%; */
   font-size: calc(11px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   font-weight: 500;
+  color: var(--fontColLight);
 }
 .newsDataSmCont {
   display: flex;
@@ -45,6 +47,7 @@
   /* border: 1px solid red; */
   justify-content: space-between;
   font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  color: var(--fontColGray);
 }
 .newsSkeletonCont {
   width: 90%;
