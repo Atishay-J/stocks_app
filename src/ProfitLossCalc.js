@@ -214,7 +214,7 @@ function ProfitLossCalc() {
       <h4 className="calcHeading">Calculate Profit / Loss</h4>
 
       <div className="inputCont" id="removeable">
-        <form onSubmit={findStock} className="inputForm">
+        <form onSubmit={findStock} className="inputForm" autocomplete="off">
           <input
             required
             className="inputField"

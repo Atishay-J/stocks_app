@@ -68,7 +68,11 @@ function CalcScreen() {
   return (
     <>
       <div className="calcScreenCont">
-        <form className="calcScreenForm" onSubmit={calculate}>
+        <form
+          className="calcScreenForm"
+          onSubmit={calculate}
+          autocomplete="off"
+        >
           <h1 className="calcTitle">Calculate EMI</h1>
           <div className="inputHolder">
             <input

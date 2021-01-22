@@ -5,6 +5,7 @@ import {
   Notifications,
   AccountCircleSharp,
   ExpandMoreSharp,
+  Block,
 } from "@material-ui/icons";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Sidebar from "react-sidebar";
@@ -58,6 +59,18 @@ function Navbar() {
     }
   }
 
+  function openSideBar() {
+    let elem = document.getElementById("sideCont").style.display;
+
+    if (elem == "block") {
+      document.getElementById("sideCont").style.display = "none";
+      // let body = document.getElementsByTagName("BODY")[0];
+      // body.style.filter = "blur(1px)";
+    } else {
+      document.getElementById("sideCont").style.display = "block";
+    }
+  }
+
   //=============================================================
   //              LOGOUT FUNCITON
   //=============================================================
@@ -70,11 +83,10 @@ function Navbar() {
   return (
     <div id="nav_cont">
       <div className="side">
-        <MenuSharp
-          id="burgerIcon"
-          className="navIcons"
-          onClick={() => onSetSidebarOpen(true)}
-        />
+        <MenuSharp id="burgerIcon" className="navIcons" onClick={openSideBar} />
+        <div id="sideCont">
+          <SideBarContent />
+        </div>
       </div>
       <div id="menuIconsRightCont">
         <Brightness4
