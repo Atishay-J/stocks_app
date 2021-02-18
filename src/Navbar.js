@@ -10,9 +10,13 @@ import {
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Sidebar from "react-sidebar";
 import SideBarContent from "./SideBarContent";
-
 import "./navbar.css";
-function Navbar() {
+
+//==============================================================
+//                REACT FUNCTION
+//==============================================================
+
+function Navbar(props) {
   const [sidebarOpen, onSetSidebarOpen] = useState("");
   const [isDark, setDark] = useState(true);
   const [login, setLogin] = useState({
@@ -20,6 +24,10 @@ function Navbar() {
     state: "LogOut",
     img: "#",
   });
+
+  //==============================================================
+  //                TOGGLE DARK MODE
+  //==============================================================
 
   function toggleDarkLight() {
     let values = document.querySelector(":root");
@@ -59,6 +67,10 @@ function Navbar() {
     }
   }
 
+  //==============================================================
+  //                OPEN CLOSE SIDEBAR
+  //==============================================================
+
   function openSideBar() {
     let elem = document.getElementById("sideCont").style.display;
 
@@ -74,16 +86,27 @@ function Navbar() {
   //=============================================================
   //              LOGOUT FUNCITON
   //=============================================================
+
   function logOut() {
     login.state == "LogOut"
       ? setLogin({ name: "User", state: "LogIn", img: "#" })
       : setLogin({ name: "Scarlett", state: "LogOut", img: "#" });
   }
-
+  console.log(props.name);
+  let menuName;
+  props.name
+    ? (menuName = <h3>name is </h3>)
+    : (menuName = (
+        <MenuSharp id="burgerIcon" className="navIcons" onClick={openSideBar} />
+      ));
+  //==============================================================
+  //************************************************************* */
+  //==============================================================
   return (
     <div id="nav_cont">
       <div className="side">
-        <MenuSharp id="burgerIcon" className="navIcons" onClick={openSideBar} />
+        {/* <MenuSharp id="burgerIcon" className="navIcons" onClick={openSideBar} /> */}
+        {menuName}
         <div id="sideCont">
           <SideBarContent />
         </div>

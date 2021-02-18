@@ -38,3 +38,29 @@
   white-space: nowrap;
   margin-top: 0.2rem;
 }
+
+/* ======================================================== */
+/* RESPONSIVE */
+/* ========================================================= */
+
+@media screen and (min-width: 640px) {
+  #sideMenuCont {
+    /* position: fixed; */
+    /* right: 0; */
+    /* left: 0; */
+    /* bottom: 0; */
+    position: static !important;
+    flex-direction: column;
+    width: 10%;
+    height: 88vh;
+    box-shadow: -2px -3px 8px -4px var(--boxShdBlk);
+  }
+  .sideBtnCont {
+    width: 80%;
+    margin: auto;
+  }
+  .sideBtnName {
+    font-size: calc(8px + (22 - 14) * ((100vw - 300px) / (1600 - 300)));
+    margin-top: 0.4rem;
+  }
+}

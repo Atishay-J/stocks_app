@@ -54,3 +54,26 @@
   margin: auto;
   margin-top: 2rem;
 }
+
+/* ======================================================== */
+/* RESPONSIVE */
+/* ========================================================= */
+
+@media screen and (min-width: 640px) {
+  .newsCont {
+    width: 60%;
+  }
+  .newsImgCont {
+    width: 80%;
+  }
+  .newsTitle {
+    font-size: calc(8px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .newsDesc {
+    /* width: 100%; */
+    font-size: calc(6px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .newsDataSmCont {
+    font-size: calc(6px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  }
+}

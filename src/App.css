@@ -62,8 +62,27 @@ input {
   filter: invert(var(--invert)) !important;
 }
 
-/* @media screen and (min-width: 640px) {
-  .App {
-    background: red;
+@media screen and (min-width: 640px) {
+  body {
+    overflow: hidden;
   }
-} */
+  .App {
+    margin: 0;
+    padding: 0;
+
+    height: 100vh;
+  }
+  .allCont {
+    /* padding-top: 1rem; */
+    height: 99vh;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+  }
+  .mainApp {
+    /* background: red; */
+    width: 70%;
+
+    overflow-y: scroll;
+  }
+}
